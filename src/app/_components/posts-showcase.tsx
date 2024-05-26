@@ -5,15 +5,16 @@ import { api } from "~/trpc/server";
 import PostFooter from "./post-footer";
 
 interface PostsShowCasePropsType {
-  category: string
+  query?: string;
+  category?: string;
 }
 
 async function PostsShowCase(props: PostsShowCasePropsType) {
   // props
-  const { category } = props;
+  const { query, category } = props;
 
   // queries and mutations
-  const latestPosts = await api.post.getAllPosts();
+  const latestPosts = await api.post.getAllPosts({ category, query });
 
   if (!latestPosts || (latestPosts && !latestPosts.length)) {
     return <div>No posts yet</div>

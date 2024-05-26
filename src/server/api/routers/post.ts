@@ -1,5 +1,4 @@
 import { z } from "zod";
-import { Post } from "@prisma/client";
 
 import { createTRPCRouter, publicProcedure } from "~/server/api/trpc";
 
@@ -32,9 +31,41 @@ export const postRouter = createTRPCRouter({
     });
   }),
 
-  getAllPosts: publicProcedure.query(({ ctx }) => {
-    return ctx.db.post.findMany({
-      orderBy: { createdAt: "desc" },
-    });
-  }),
+  getAllPosts: publicProcedure
+    .input(
+      z.object({
+        query: z.string().optional(),
+        category: z.string().optional(),
+      }),
+    )
+    .query(({ ctx, input }) => {
+      return ctx.db.post.findMany({
+        orderBy: { createdAt: "desc" },
+        where: {
+          ...(input.query
+            ? {
+                OR: [
+                  {
+                    title: {
+                      startsWith: input?.query,
+                      mode: "insensitive",
+                    },
+                  },
+                  {
+                    title: {
+                      contains: input?.query,
+                      mode: "insensitive",
+                    },
+                  },
+                ],
+              }
+            : null),
+          AND: {
+            category: {
+              has: input?.category?.toLowerCase(),
+            },
+          },
+        },
+      });
+    }),
 });
