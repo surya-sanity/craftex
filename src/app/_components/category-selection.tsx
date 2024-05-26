@@ -12,7 +12,7 @@ const CategorySelection = () => {
   const searchParams = useSearchParams();
 
   const [searchTerm, setSearchTerm] = useState(searchParams.get('query') ?? '');
-  const [selectedCategory, setSelectedCategory] = useState(searchParams.get('category') ?? 'All');
+  const [selectedCategory, setSelectedCategory] = useState<PostsCategory>(searchParams.get('category') as PostsCategory ?? PostsCategory.All);
 
   useEffect(() => {
     const params = new URLSearchParams();
@@ -34,7 +34,10 @@ const CategorySelection = () => {
       <div>
         {
           React.Children.toArray((Object.values(PostsCategory)).map((tag) => {
-            const isSelected = (selectedCategory as PostsCategory) === tag;
+            let isSelected: boolean | undefined;
+            if (Object.values(PostsCategory).includes(selectedCategory)) {
+              isSelected = (selectedCategory) === tag;
+            }
             return <Button variant={!isSelected ? "ghost" : "default"} onClick={() => handleCategoryChange(tag)}>{tag}</Button>
           }))
         }
