@@ -18,6 +18,7 @@ const CategorySelection = () => {
     const params = new URLSearchParams();
     if (searchTerm) params.set('query', searchTerm);
     if (selectedCategory) params.set('category', selectedCategory);
+
     router.replace(`/?${params.toString()}`);
   }, [searchTerm, selectedCategory, router]);
 

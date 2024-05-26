@@ -60,11 +60,15 @@ export const postRouter = createTRPCRouter({
                 ],
               }
             : null),
-          AND: {
-            category: {
-              has: input?.category?.toLowerCase(),
-            },
-          },
+          ...(input.category
+            ? {
+                AND: {
+                  category: {
+                    has: input?.category?.toLowerCase(),
+                  },
+                },
+              }
+            : null),
         },
       });
     }),
