@@ -18,12 +18,12 @@ async function PostsShowCase(props: PostsShowCasePropsType) {
 
   if (!latestPosts || (latestPosts && !latestPosts.length)) {
     return <div className="flex items-center justify-center min-h-[30vh]">
-      {query && query.length ? <div className="flex flex-col gap-2 items-center">
+      {query ? query.length ? <div className="flex flex-col gap-2 items-center">
         <div>
           No results for
         </div>
-        <div className="text-sm text-muted-foreground">"{query}"</div>
-      </div> : "No posts yet"}
+        <div className="text-sm text-muted-foreground">&quot;{query}&quot;</div>
+      </div> : "No posts yet" : null}
     </div>
   }
 

@@ -39,12 +39,14 @@ const Navbar = () => {
       }
     });
 
-    for (let index = 0; index < dataToInsert.length; index++) {
-      const data = dataToInsert[index];
+    for (const iterator of dataToInsert) {
+      const data = iterator;
       if (data) {
         // createPost.mutate({ ...data });
       }
+
     }
+
   }
 
   return (
