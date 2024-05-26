@@ -5,7 +5,7 @@ import { api } from "~/trpc/server";
 import PostFooter from "./post-footer";
 
 interface PostsShowCasePropsType {
-  category: string | "all"
+  category: string
 }
 
 async function PostsShowCase(props: PostsShowCasePropsType) {

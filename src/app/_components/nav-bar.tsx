@@ -1,12 +1,9 @@
 "use client"
 
-import { SearchIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Button } from "~/components/ui/button";
-import { Input } from "~/components/ui/input";
-import { prettyFolioResponse } from "~/mockdata";
 import { api } from "~/trpc/react";
 
 const Navbar = () => {
