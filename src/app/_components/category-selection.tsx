@@ -34,7 +34,7 @@ const CategorySelection = () => {
       <div>
         {
           React.Children.toArray((Object.values(PostsCategory)).map((tag) => {
-            const isSelected = selectedCategory === tag;
+            const isSelected = (selectedCategory as PostsCategory) === tag;
             return <Button variant={!isSelected ? "ghost" : "default"} onClick={() => handleCategoryChange(tag)}>{tag}</Button>
           }))
         }
