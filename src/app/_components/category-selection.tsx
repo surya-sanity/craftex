@@ -11,8 +11,8 @@ const CategorySelection = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
 
-  const [searchTerm, setSearchTerm] = useState(searchParams.get('query') || '');
-  const [selectedCategory, setSelectedCategory] = useState(searchParams.get('category') || 'All');
+  const [searchTerm, setSearchTerm] = useState(searchParams.get('query') ?? '');
+  const [selectedCategory, setSelectedCategory] = useState(searchParams.get('category') ?? 'All');
 
   useEffect(() => {
     const params = new URLSearchParams();
