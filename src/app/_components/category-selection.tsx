@@ -29,6 +29,7 @@ const CategorySelection = () => {
 
   const handleCategoryChange = (category: PostsCategory) => {
     setSelectedCategory(category);
+    setSearchTerm("")
   };
 
   return <>
