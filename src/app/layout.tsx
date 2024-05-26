@@ -34,7 +34,9 @@ export default function RootLayout({
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem >
           <TRPCReactProvider>
             <Navbar />
-            {children}
+            <div className="flex flex-col min-h-[86vh]">
+              {children}
+            </div>
             <Footer />
           </TRPCReactProvider>
         </ThemeProvider>

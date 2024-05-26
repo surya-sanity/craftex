@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Button } from "~/components/ui/button";
+import { prettyFolioResponse } from "~/mockdata";
 import { api } from "~/trpc/react";
 
 const Navbar = () => {
@@ -18,32 +19,32 @@ const Navbar = () => {
   });
 
   const handleSubmitClick = () => {
-    // type InsertData = {
-    //   title: string,
-    //   url: string,
-    //   featuredImage: string,
-    //   slug: string,
-    //   category: string[],
-    //   datePublished: string,
-    // }
+    type InsertData = {
+      title: string,
+      url: string,
+      featuredImage: string,
+      slug: string,
+      category: string[],
+      datePublished: string,
+    }
 
-    // const dataToInsert: InsertData[] = prettyFolioResponse.map((item) => {
-    //   return {
-    //     title: item.title ?? "title",
-    //     url: item.url ?? "url",
-    //     featuredImage: item.featuredImage.url ?? "url",
-    //     slug: item.slug ?? "slug",
-    //     category: item.category.name ?? ["slug"],
-    //     datePublished: item.datePublished ?? "date",
-    //   }
-    // });
+    const dataToInsert: InsertData[] = prettyFolioResponse.map((item) => {
+      return {
+        title: item.title ?? "title",
+        url: item.url ?? "url",
+        featuredImage: item.featuredImage.url ?? "url",
+        slug: item.slug ?? "slug",
+        category: item.category.name ?? ["slug"],
+        datePublished: item.datePublished ?? "date",
+      }
+    });
 
-    // for (let index = 0; index < dataToInsert.length; index++) {
-    //   const data = dataToInsert[index];
-    //   if (data) {
-    //     // createPost.mutate({ ...data });
-    //   }
-    // }
+    for (let index = 0; index < dataToInsert.length; index++) {
+      const data = dataToInsert[index];
+      if (data) {
+        // createPost.mutate({ ...data });
+      }
+    }
   }
 
   return (

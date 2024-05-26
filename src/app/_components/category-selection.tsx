@@ -5,6 +5,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { Button } from "~/components/ui/button";
 import { Input } from "~/components/ui/input";
+import { cn } from "~/lib/utils";
 import { PostsCategory } from "~/types";
 
 const CategorySelection = () => {
@@ -39,7 +40,12 @@ const CategorySelection = () => {
             if (Object.values(PostsCategory).includes(selectedCategory)) {
               isSelected = (selectedCategory) === tag;
             }
-            return <Button variant={!isSelected ? "ghost" : "default"} onClick={() => handleCategoryChange(tag)}>{tag}</Button>
+            return <Button variant={!isSelected ? "ghost" : "default"}
+              className={cn("!bg-transparent rounded-none", {
+                "text-muted-foreground": !isSelected,
+                "border-b border-b-primary": isSelected
+              })}
+              onClick={() => handleCategoryChange(tag)}>{tag}</Button>
           }))
         }
       </div>

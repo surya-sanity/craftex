@@ -17,7 +17,14 @@ async function PostsShowCase(props: PostsShowCasePropsType) {
   const latestPosts = await api.post.getAllPosts({ category, query });
 
   if (!latestPosts || (latestPosts && !latestPosts.length)) {
-    return <div>No posts yet</div>
+    return <div className="flex items-center justify-center min-h-[30vh]">
+      {query && query.length ? <div className="flex flex-col gap-2 items-center">
+        <div>
+          No results for
+        </div>
+        <div className="text-sm text-muted-foreground">"{query}"</div>
+      </div> : "No posts yet"}
+    </div>
   }
 
   return (
