@@ -1,28 +1,75 @@
-# FolioHive
+# Craftex
 
-This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
+A portfolio showcase application built with the T3 stack, using Next.js and Prisma.
 
-## What's next? How do I make an app with this?
+## Features
 
-We try to keep this project as simple as possible, so you can start with just the scaffolding we set up for you, and add additional things later when they become necessary.
+- Curated portfolio displays
+- Next.js for SSR and SSG
+- Prisma for database interactions
+- Tailwind CSS for styling
 
-If you are not familiar with the different technologies used in this project, please refer to the respective docs. If you still are in the wind, please join our [Discord](https://t3.gg/discord) and ask for help.
+## Prerequisites
 
-- [Next.js](https://nextjs.org)
-- [NextAuth.js](https://next-auth.js.org)
-- [Prisma](https://prisma.io)
-- [Tailwind CSS](https://tailwindcss.com)
-- [tRPC](https://trpc.io)
+- Node.js (v14 or higher)
+- npm or yarn
+- PostgreSQL (or any Prisma-supported database)
 
-## Learn More
+## Installation
 
-To learn more about the [T3 Stack](https://create.t3.gg/), take a look at the following resources:
+1. Clone the repository:
+   \`\`\`bash
+   git clone https://github.com/your-username/craftex.git
+   cd craftex
+   \`\`\`
 
-- [Documentation](https://create.t3.gg/)
-- [Learn the T3 Stack](https://create.t3.gg/en/faq#what-learning-resources-are-currently-available) — Check out these awesome tutorials
+2. Install dependencies:
+   \`\`\`bash
+   npm install
 
-You can check out the [create-t3-app GitHub repository](https://github.com/t3-oss/create-t3-app) — your feedback and contributions are welcome!
+   # or
 
-## How do I deploy this?
+   yarn install
+   \`\`\`
 
-Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel), [Netlify](https://create.t3.gg/en/deployment/netlify) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
+3. Set up environment variables:
+   Create a \`.env\` file with your database URL:
+   \`\`\`env
+   DATABASE_URL="postgresql://user:password@localhost:5432/your-database-name"
+   \`\`\`
+
+4. Migrate the database and generate Prisma client:
+   \`\`\`bash
+   npx prisma migrate dev --name init
+   npx prisma generate
+   \`\`\`
+
+## Usage
+
+Start the development server:
+\`\`\`bash
+npm run dev
+
+# or
+
+yarn dev
+\`\`\`
+The app will be running at [http://localhost:3000](http://localhost:3000).
+
+## Deployment
+
+1. Build the application:
+   \`\`\`bash
+   npm run build
+
+   # or
+
+   yarn build
+   \`\`\`
+
+2. Start the production server:
+   \`\`\`bash
+   npm start
+   # or
+   yarn start
+   \`\`\`
