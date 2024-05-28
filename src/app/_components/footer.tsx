@@ -38,9 +38,14 @@ const Footer = () => {
             const { link, type } = social;
             const Icon = socialsIconMap[type];
 
-            return (<Link href={link}>
-              <Icon className="h-5 w-5 text-muted-foreground hover:text-primary" />
-            </Link>)
+            return (
+
+              <Link href={link} passHref legacyBehavior>
+                <a target="_blank" rel="noopener noreferrer">
+                  <Icon className="h-5 w-5 text-muted-foreground hover:text-primary" />
+                </a>
+              </Link>
+            )
           }))
         }
       </div>
