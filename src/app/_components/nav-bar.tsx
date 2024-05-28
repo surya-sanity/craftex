@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -43,18 +43,14 @@ const Navbar = () => {
   //   }
   // }
 
-  const handleSubmitClick = () => {
-
-  }
-
   return (
-    <nav className="w-full flex flex-row items-center justify-between px-5 pt-5">
+    <nav className="flex w-full flex-row items-center justify-between px-5 pt-5">
       <Link href={"/"} passHref>
         <Image width={35} height={35} src={"/foliohive.png"} alt="logo" />
       </Link>
       <SubmitDialog />
     </nav>
-  )
-}
+  );
+};
 
 export default Navbar;
