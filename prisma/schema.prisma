@@ -26,3 +26,15 @@ model Post {
 
     @@index([title])
 }
+
+model SubmitPost {
+    id        Int      @id @default(autoincrement())
+    name      String
+    url       String
+    description       String?
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    @@index([url])
+}

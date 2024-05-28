@@ -12,6 +12,8 @@ import {
 import { Input } from "~/components/ui/input";
 import { Label } from "~/components/ui/label";
 import { Textarea } from "~/components/ui/textarea";
+import { api } from "~/trpc/react";
+import { toast } from "sonner";
 
 interface SubmitDialogFormType {
   url: string;
@@ -32,6 +34,18 @@ const SubmitDialog = () => {
     formState: { errors, isDirty },
   } = useForm<SubmitDialogFormType>();
 
+  // queries and mutations
+  const createSubmitPost = api.submitPost.create.useMutation({
+    onSuccess: () => {
+      setIsDialogOpen(false);
+      toast("Your portfolio has been submitted👍", {
+        position: "top-center",
+        className: "text-center",
+        duration: 5000,
+      });
+    },
+  });
+
   useEffect(() => {
     if (!isDialogOpen) {
       reset();
@@ -42,8 +56,11 @@ const SubmitDialog = () => {
     const valid = await trigger();
 
     if (valid && values) {
-      console.log("values", values);
-      // TODO, implement creation of post with awaiting approval from admin.
+      createSubmitPost.mutate({
+        name: values.name,
+        url: values.url,
+        description: values.description,
+      });
     }
   };
 
@@ -116,8 +133,12 @@ const SubmitDialog = () => {
             <Button size={"sm"} variant={"outline"} onClick={handleCloseDialog}>
               Cancel
             </Button>
-            <Button size={"sm"} type="submit">
-              Submit
+            <Button
+              size={"sm"}
+              type="submit"
+              disabled={createSubmitPost.isPending}
+            >
+              {createSubmitPost.isPending ? "Submitting.." : "Submit"}
             </Button>
           </div>
         </form>
