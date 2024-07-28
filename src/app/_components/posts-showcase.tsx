@@ -42,18 +42,16 @@ async function PostsShowCase(props: PostsShowCasePropsType) {
           return (
             <div className="flex h-full w-full flex-col gap-2 rounded-md border border-transparent transition-all">
               <div className="flex h-full w-full flex-col gap-2">
-                <Link href={`${post.slug}`} legacyBehavior>
-                  <div className="relative aspect-video !cursor-pointer overflow-hidden rounded-md border border-transparent transition-all hover:border-border md:!min-h-[20rem]">
-                    <Image
-                      src={post.featuredImage}
-                      fill={true}
-                      alt={post.title}
-                      sizes="(max-width: 768px) 100vw,(max-width: 1200px) 50vw,33vw"
-                      className="object-contain transition-all fade-in-40"
-                      priority
-                    />
-                  </div>
-                </Link>
+                <div className="relative aspect-video overflow-hidden rounded-md border border-transparent transition-all hover:border-border md:!min-h-[20rem]">
+                  <Image
+                    src={post.featuredImage}
+                    fill={true}
+                    alt={post.title}
+                    sizes="(max-width: 768px) 100vw,(max-width: 1200px) 50vw,33vw"
+                    className="object-contain transition-all fade-in-40"
+                    priority
+                  />
+                </div>
                 <PostFooter
                   title={post.title}
                   url={post.url}
