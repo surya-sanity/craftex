@@ -3,7 +3,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import SubmitDialog from "./submit-dialog";
-import { SignIn } from "../../components/signin";
 
 const Navbar = () => {
   // hooks
